@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'destino.dart';
-
+import 'package:travel5/destination.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "TravelHigh ",
+      title: "Travel App",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
       home: MyHomePage(),
@@ -36,95 +34,95 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-          child: Column(
+      child: Column(
+        children: <Widget>[
+          Stack(
             children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 250.0,
-                    padding: EdgeInsets.only(left: 20),
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(25),
-                        bottomRight: Radius.circular(25),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 250.0,
+                padding: EdgeInsets.only(left: 20),
+                decoration: BoxDecoration(
+                  color: Colors.blueGrey,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(25),
+                    bottomRight: Radius.circular(25),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(height: 50),
+                    Text(
+                      "Categories",
+                      style: GoogleFonts.arvo(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        textStyle: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        SizedBox(height: 50),
-                        Text(
-                          "Promoções",
-                          style: GoogleFonts.arvo(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            textStyle: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
+                    Text(
+                      "We are sharing about recommended place",
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                          color: Colors.white70,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
                         ),
-                        Text(
-                          "",
-                          style: GoogleFonts.lato(
-                            textStyle: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 17,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: 230,
-                    margin: EdgeInsets.only(top: 135, left: 20),
-                    child: CustomCarousel(),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20),
-              Container(
-                margin: EdgeInsets.only(left: 17),
-                width: MediaQuery.of(context).size.width,
-                child: TabBar(
-                  labelColor: Colors.blueGrey,
-                  unselectedLabelColor: Colors.black26,
-                  controller: _tabController,
-                  indicatorColor: Colors.black,
-                  unselectedLabelStyle: GoogleFonts.lato(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  labelStyle: GoogleFonts.lato(
-                    fontSize: 23,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  isScrollable: true,
-                  tabs: <Widget>[
-                    Tab(text: "Popular"),
-                    Tab(text: "Recomendados"),
                   ],
                 ),
               ),
               Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                child: TabBarView(
-                  controller: _tabController,
-                  children: <Widget>[
-                    ListPopular(),
-                    ListPopular(),
-                    //pode fazer 2 ou mais de 2 listas de widgets
-                  ],
-                ),
-              )
+                width: double.infinity,
+                height: 230,
+                margin: EdgeInsets.only(top: 135, left: 20),
+                child: CustomCarousel(),
+              ),
             ],
           ),
-        ));
+          SizedBox(height: 20),
+          Container(
+            margin: EdgeInsets.only(left: 17),
+            width: MediaQuery.of(context).size.width,
+            child: TabBar(
+              labelColor: Colors.blueGrey,
+              unselectedLabelColor: Colors.black26,
+              controller: _tabController,
+              indicatorColor: Colors.black,
+              unselectedLabelStyle: GoogleFonts.lato(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
+              labelStyle: GoogleFonts.lato(
+                fontSize: 23,
+                fontWeight: FontWeight.w600,
+              ),
+              isScrollable: true,
+              tabs: <Widget>[
+                Tab(text: "Popular"),
+                Tab(text: "Recommended"),
+              ],
+            ),
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: TabBarView(
+              controller: _tabController,
+              children: <Widget>[
+                ListPopular(),
+                ListPopular(),
+                //!you can make 2  or more than 2 widget list ^^
+              ],
+            ),
+          )
+        ],
+      ),
+    ));
   }
 }
 
@@ -242,10 +240,10 @@ class ListPopular extends StatelessWidget {
                     Text(data.country,
                         style: GoogleFonts.arvo(
                             textStyle: TextStyle(
-                              color: Colors.redAccent,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                            ))),
+                          color: Colors.redAccent,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ))),
                     SizedBox(height: 10),
                     Text(
                       data.name,

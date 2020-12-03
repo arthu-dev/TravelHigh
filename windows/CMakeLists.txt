@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(flutter_apphotel LANGUAGES CXX)
+project(travel LANGUAGES CXX)
 
-set(BINARY_NAME "flutter_apphotel")
+set(BINARY_NAME "travel")
 
 cmake_policy(SET CMP0063 NEW)
 
